@@ -6,6 +6,8 @@ const AddProduct = () => {
   const [products, setProducts] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
+  const [price, setPrice] = useState("");
   const navigate = useNavigate();
 
   const add = (e) => {
@@ -18,6 +20,8 @@ const AddProduct = () => {
     const newProduct = {
       product_name: name,
       description: description,
+      image: image,
+      price: price,
     };
 
     // const data = `{
@@ -74,6 +78,26 @@ const AddProduct = () => {
             placeholder="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Image Url:</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="image"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Price:</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="price"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
           />
         </div>
 

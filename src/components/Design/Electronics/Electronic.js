@@ -39,12 +39,12 @@ const Electronic = () => {
         <div className="row">
           {products.map((product, index) => (
             <div class="col-sm-3" key={index}>
-              <img src={phones} alt="" style={{ height: "60%" }} />
+              <img src={product.image} alt="" style={{ height: "60%" }} />
               <h4>
                 <i>{product.product_name}</i>
               </h4>
               <p>{product.description}</p>
-              <p>Ksh.300</p>
+              <p>{product.price}</p>
               <Link to="/design/a.cart/brace">
                 <button className="btn-dark">Add to Cart</button>
               </Link>

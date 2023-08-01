@@ -39,6 +39,8 @@ const ProductList = ({ products, setProducts }) => {
             <tr>
               <td>Product Name:</td>
               <td>Description:</td>
+              <td>Image(URL):</td>
+              <td>Price:</td>
             </tr>
           </thead>
           <tbody>
@@ -46,6 +48,8 @@ const ProductList = ({ products, setProducts }) => {
               <tr key={index}>
                 <td>{product.product_name}</td>
                 <td>{product.description}</td>
+                <td>{product.image}</td>
+                <td>{product.price}</td>
                 <td>
                   <button onClick={() => updatedProduct(product)}>Edit</button>
                 </td>
