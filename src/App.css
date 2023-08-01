@@ -1,38 +1,601 @@
 .App {
-  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-family: Parisienne;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: 'Imperial';
+  src: url('../public/ImperialScript.ttf') format('truetype');
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.homeContainer {
+  background-image: url(images/photo.jpg);
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-position: center;
+  background-size: cover;
+}
+
+.homeContainer h1 {
+  color: rgb(255, 255, 255);
+  padding-top: 10%;
+  font-size: 150px;
+  margin-left: 10%;
+  font-family: 'Imperial';
+  font-weight: 700;
+  text-shadow: 12px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.homeContainer button {
+  background-color: black;
+  color: white;
+  padding: 15px 115px;
+  border-radius: 30px;
+  margin-top: 2%;
+  margin-left: 15%;
+  font-size: 20px;
+}
+
+.homeContainer button:hover {
+  color: black;
+  background-color: white;
+  border: 0;
+}
+
+.dash .col-sm-4 {
+  background-color: #000;
+  width: 18%;
+  height: 90vh;
+}
+
+.dash .col-sm-4 ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.dash .col-sm-4 li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.dash .col-sm-4 li:hover {
+  background-color: #ece9e9;
+  color: black;
+}
+
+.dash .col-sm-4 ul ul {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: #000;
+  min-width: 200px;
+  padding: 10px;
+}
+
+.dash .col-sm-4 li:hover>ul {
+  display: block;
+}
+
+.users form {
+  text-align: left;
+  margin-left: 20%;
+  background: rgb(61, 56, 135);
+  margin-top: 3%;
+  border: 2px solid #000;
+  padding: 2%;
+  width: 60%;
+  height: 80vh;
+  border-radius: 10px;
+  box-shadow:12px 12px 10px #000;
+}
+
+.users {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.users form label {
+  padding: 1.5%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.users button {
+  margin-top: 2%;
+}
+
+.users form .btn2 {
+  float: right;
+  margin-top: 2%;
+}
+
+.userslist {
+  width: 60%;
+  margin-left: 20%;
+  color:black;
+  margin-top:2%;
+}
+
+.product form {
+  text-align: left;
+  margin-left: 20%;
+  background-color:rgb(61, 56, 135);
+  margin-top: 3%;
+  border: 2px ;
+  padding: 2%;
+  width: 60%;
+  height: 45vh;
+  border-radius: 10px;
+  box-shadow:12px 12px 10px #000;
+}
+
+.product {
+  color: white;
+}
+
+.product form label {
+  padding: 1.5%;
+  font-size:20px;
+  font-weight:700;
+}
+
+.product button {
+  margin-top: 2%;
+  padding:7px 15px;
+  font-size:20px;
+}
+
+.product form .btn2 {
+  float: right;
+  margin-top: 2%;
+}
+.productlist {
+  width: 60%;
+  margin-left: 20%;
+  color:black;
+  margin-top:2%;
+}
+
+.customers form {
+  text-align: left;
+  margin-left: 20%;
+  background-color: rgb(61, 56, 135);
+  margin-top: 3%;
+  border: 2px solid #000;
+  padding: 2%;
+  width: 60%;
+  height: 55vh;
+  border-radius: 10px;
+  box-shadow:12px 12px 10px #000;
+}
+
+.customers {
+  color: white;
+}
+
+.customers form label {
+  padding: 1.5%;
+}
+
+.customers form .btn2 {
+  float: right;
+  margin-top: 2%;
+}
+
+.customers button {
+  margin-top: 2%;
+}
+
+.customerlist {
+  width: 60%;
+  margin-left: 20%;
+  color:black;
+  margin-top:2%;
+}
+
+.shop {
+  padding-top: 2%;
+  background: linear-gradient(309deg, rgb(245, 245, 245) 0%, rgba(200, 189, 207, 0.877) 79%);
+  height: 110vh;
+}
+.shop i {
+  font-style: italic;
+  font-size: 30px;
+  margin-left: 5%;
+}
+.shop h1 {
+  text-align: center;
+  padding: 2%;
+  font-weight: 700;
+  font-size: 100px;
+}
+.shopLinks ul li {
+  list-style: none;
+  display: inline-block;
+  margin: 0 45px;
+  color: #000;
+  font-weight: 700;
+  font-size:20px;
+}
+.shopLinks ul li:hover{
+  transform: scale(1.2);
+}
+.shop .row {
+  margin-left: 5%;
+}
+.shop .row Link{
+  color:white;
+}
+
+.shop .col-sm-4 {
+  width: 250px;
+  height: 300px;
+  margin: 3%;
+}
+
+.shop .col-sm-4 h2 {
+  text-align: center;
+  text-shadow: #000;
+  padding-top: 50%;
+  font-family: Georgia;
+  text-shadow: 18px 12px 5px #000;
+  font-size:42px;
+}
+.photo1 {
+  background-image: url(images/Baggy.jpg);
+  background-position: center;
+}
+.photo2 {
+  background-image: url(images/man.jpg);
+}
+.photo3 {
+  background-image: url(images/jewel.jpg);
+  background-position: center;
+}
+.photo4 {
+  background-image: url(images/electric.jpg); 
+  background-position: center;
+}
+.shop .col-sm-4{
+  background-size: cover;
+}
+.shop .col-sm-4:hover{
+  filter: grayscale(1);
+  cursor:pointer;
+  transform: scale(1.1);
+  transition: transform 0.5s;
+}
+.shop button.btn-dark{
+  background-color: #000;
+  color:white;
+}
+.shop button.btn-dark:hover {
+ background-color: white;
+ color:#000;
+  transform: scale(1.1);
+}
+
+.boxes div {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border: 5px solid #000
+}
+
+.boxes div:nth-child(1) {
+  top: 80%;
+  left: 10%;
+  animation: box-animate 10s infinite
+}
+
+.boxes div:nth-child(2) {
+  top: 30%;
+  left: 80%;
+  animation: box-animate 9s infinite
+}
+
+.boxes div:nth-child(3) {
+  top: 50%;
+  left: 50%;
+  animation: box-animate 6s infinite
+}
+
+.boxes div:nth-child(4) {
+  top: 9ch;
+  left: 60%;
+  animation: box-animate 15s infinite
+}
+
+.boxes div:nth-child(5) {
+  top: 40%;
+  left: 30%;
+  animation: box-animate 9s infinite
+}
+
+.boxes div:nth-child(6) {
+  top: 100%;
+  left: 90%;
+  animation: box-animate 12s infinite
+}
+
+.boxes div:nth-child(7) {
+  top: 80%;
+  left: 30%;
+  animation: box-animate 2s infinite
+}
+
+.boxes div:nth-child(8) {
+  top: 50%;
+  left: 20%;
+  animation: box-animate 5s infinite
+}
+
+.boxes div:nth-child(9) {
+  top: 60%;
+  left: 80%;
+  animation: box-animate 5s infinite
+}
+
+@keyframes box-animate {
+  0% {
+    transform: scale(0) translateY(0) rotate(0);
+    opacity: 1
   }
-  to {
-    transform: rotate(360deg);
+
+  100% {
+    transform: scale(1.3) translateY(-90px) rotate(360deg);
+    opacity: 0
   }
+}
+
+.design {
+  background: linear-gradient(309deg, rgb(245, 245, 245) 0%, rgba(200, 189, 207, 0.877) 79%);
+}
+
+.design h1 {
+  padding-top: 1.5%;
+}
+
+.design h2 {
+  margin-left: 6.5%;
+  margin-top: -1.5%;
+}
+
+.design .col-sm-3 {
+  background-color: rgb(223, 222, 225);
+  width: 250px;
+  height: 450px;
+  margin-left: 7%;
+  margin-top: 0.5%;
+  border: 1px solid black;
+  box-shadow: 5px 5px 10px #482249;
+  text-align: left;
+}
+
+.design .btn-dark {
+  float: right;
+  padding: 7px 18px;
+  border-radius: 15px;
+  margin-right: 5%;
+  background: black;
+  color: white;
+  font-size: 14px;
+}
+
+.design .col-sm-3 img {
+  width: 250px;
+  height: 250px;
+  padding-top: 10px;
+}
+
+.col-sm-3 h4 {
+  padding: 2%;
+}
+
+.col-sm-3 .btn-dark {
+  float: left;
+  border-radius: 0;
+}
+
+.brace {
+  background: linear-gradient(309deg, rgb(245, 245, 245) 0%, rgba(200, 189, 207, 0.877) 79%);
+  height: 100vh;
+}
+
+.brace .col-sm-3 {
+  height: 70vh;
+  border-radius: 5px;
+  box-shadow: 2px 2px 0px black;
+  background-color: #807a80;
+}
+
+.brace .content {
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  padding-top: 2%;
+}
+
+.brace img {
+  width: 50%;
+  height: 80%;
+  float: left;
+  margin-top: 3%;
+  margin-left: 2%;
+  margin-right: 5%;
+  border: 2px solid #000;
+}
+
+.brace .col-sm-3 .btn-dark {
+  margin-top: 5%;
+  background-color: #000;
+  color: white;
+  font-size: 18px;
+  padding: 7px 115px;
+}
+
+.brace .col-sm-3 .btn-dark2 {
+  margin-top: 18%;
+  background-color: #000;
+  color: white;
+  padding: 7px 15px;
+  font-size: 18px;
+}
+
+.dash .container {
+  width: 100%;
+}
+
+.dash form {
+  margin-left: 70%;
+}
+
+.dash form input {
+  padding: 7px 110px;
+  border-radius: 20px;
+}
+
+.dash form button {
+  border-radius: 20px;
+}
+
+.dash .col-sm-4 button {
+  margin-top: 50vh;
+  margin-left: 20%;
+  background-color: #ccc;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.dash .col-sm-8 {
+  width: 80%;
+}
+
+.dash .col-sm-3 {
+  width: 28%;
+  height: 170px;
+  margin-left: 3%;
+  background-color: rgb(223, 222, 225);
+  box-shadow: 2px 2px 15px black;
+}
+
+.dash .col-sm-6 {
+  margin-left: 3%;
+  background-color: rgb(223, 222, 225);
+  width: 60%;
+  margin-top: 3%;
+  height: 400px;
+  box-shadow: 2px 2px 15px black;
+}
+
+.dash .col-sm-2 {
+  margin-left: 3%;
+  background-color: rgb(223, 222, 225);
+  width: 27%;
+  margin-top: 3%;
+  height: 400px;
+  box-shadow: 2px 2px 15px black;
+}
+
+.dash .col-sm-3 img {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.dash .col-sm-2 {
+  margin-left: 3%;
+  background-color: rgb(214, 55, 55);
+}
+.login .row{
+  width:90%;
+  padding-top: 5%;
+}
+.login .col-sm-6 .title{
+  margin-top: 10%;
+  margin-left:30%;
+}
+
+.login .col-sm-6 .title h1{
+  font-size:80px;
+  font-weight: 700;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  width: 340px;
+  padding: 5%;
+  text-shadow: 12px 2px 5px rgba(0, 0, 0, 0.5);
+  font-family:'Imperial' ;
+}
+.login .col-sm-6 .title button{
+    font-size: 20px;
+    padding: 7px 115px;
+    text-align: center;
+    font-weight: 700;
+    font-family: Georgia;
+    border-radius: 25px;
+  }
+
+.login .col-sm-6 .form1{
+  padding:5%;
+  background-color: #000;
+  height:60vh;
+  border-radius: 20px;
+  box-shadow: 2px 12px 15px black;
+}
+.login .col-sm-6 .form1 label{
+  padding:2%;
+  color:white;
+  font-size: 20px;
+}
+.login .col-sm-6 .form1 input{
+  border-radius: 20px;
+}
+.login .col-sm-6 .form1 button{
+  background-color: white;
+  color:#000;
+  margin-top:10%;
+  font-size: 20px;
+  padding: 7px 115px;
+  margin-left: 30%;
+  text-align: center;
+  font-weight: 700;
+  font-family: Georgia;
+  border-radius: 25px;
+}
+.login .col-sm-6 .form2 label{
+  padding:1.5%;
+  color:white;
+  font-size: 18px;
+}
+.login .col-sm-6 .form2 input{
+  border-radius: 20px;
+}
+.login .col-sm-6 .form2 button{
+  background-color: white;
+  color:#000;
+  margin-top:5%;
+  font-size: 20px;
+  padding: 7px 115px;
+  margin-left: 25%;
+  text-align: center;
+  font-weight: 700;
+  font-family: Georgia;
+  border-radius: 25px;
+}
+.login .col-sm-6 .form2{
+  padding:5%;
+  background-color: #000;
+  height:80vh;
+  border-radius: 20px;
+  box-shadow: 2px 12px 15px black;
+}
+.elect .col-sm-3{
+  width:350px;
+  margin-top:2%;
+}
+.elect .col-sm-3 img{
+ width:100%;
+ height:600px;
 }
