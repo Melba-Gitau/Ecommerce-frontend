@@ -54,6 +54,8 @@ import Patterned from "./components/Design/Men/M.cart/Sweaters/Patterned";
 import Knit from "./components/Design/Men/M.cart/Sweaters/Knit";
 import Tuttleneck from "./components/Design/Men/M.cart/Sweaters/Tuttlneck";
 import Sweats from "./components/Design/Men/M.cart/Sweaters/Sweats";
+import CategoryList from "./components/Category/CategoryList";
+import AddCategory from "./components/Category/AddCategory";
 
 function App() {
   return (
@@ -66,6 +68,8 @@ function App() {
           <Route exact path="/users/list" element={<UsersList />} />
           <Route exact path="/products/add" element={<AddProduct />} />
           <Route exact path="/products/list" element={<ProductList />} />
+          <Route exact path="/category/add" element={<AddCategory />} />
+          <Route exact path="/category/list" element={<CategoryList />} />
           <Route exact path="/customers/add" element={<AddCustomers />} />
           <Route exact path="/design/l" element={<Login />} />
           <Route exact path="/design/s" element={<Signup />} />

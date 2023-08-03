@@ -132,6 +132,30 @@ const DashBoard = () => {
                 )}
               </li>
               <li onClick={toggleSubMenu}>Orders</li>
+              <li onClick={toggleSubMenu}>
+                Category
+                {showSubMenu && (
+                  <ul>
+                    <li>
+                      <Link
+                        to="/category/add"
+                        style={{ color: "white", textDecoration: "none" }}
+                      >
+                        Add Category
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/category/list"
+                        style={{ color: "white", textDecoration: "none" }}
+                      >
+                        Category list
+                      </Link>
+                    </li>
+                    <li>Edit Info</li>
+                  </ul>
+                )}
+              </li>
             </ul>
             <Link to="/design/shop">
               <button className="btn-dark">Sign Out</button>
