@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Shop = () => {
+  const [category, setCategory] = useState([]);
+  useEffect(() => {
+    const url = "http://localhost:8336/category/list";
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.Success) {
+          setCategory(response.data);
+        } else {
+          alert("Failed to fetch records");
+        }
+      })
+      .catch((error) => {
+        alert("Request Failed");
+      });
+  }, []);
   return (
     <div className="shop">
       <i
@@ -46,20 +63,23 @@ const Shop = () => {
       </div>
 
       <div className="row">
-        <div className="col-sm-4 photo1">
-          <h2>
-            <Link
-              to="/design/women"
-              style={{
-                color: "white",
-                textDecoration: "NONE",
-              }}
-            >
-              <i>Ladies</i>
-            </Link>
-          </h2>
-        </div>
-        <div className="col-sm-4 photo2">
+        {category.map((category, index) => (
+          <div className="col-sm-4" key={index}>
+            <img src={category.image} alt="" />
+            <h2>
+              <Link
+                to="/design/women"
+                style={{
+                  color: "white",
+                  textDecoration: "NONE",
+                }}
+              >
+                <i>{category.name}</i>
+              </Link>
+            </h2>
+          </div>
+        ))}
+        {/* <div className="col-sm-4 photo2">
           <h2>
             <Link
               to="/design/men"
@@ -88,7 +108,7 @@ const Shop = () => {
               <i>Electronics</i>
             </Link>
           </h2>
-        </div>
+        </div> */}
       </div>
       <Link to="/dashboard">
         <button

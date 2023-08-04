@@ -269,21 +269,27 @@
   width: 250px;
   height: 300px;
   margin: 3%;
+  background-color: #000;
 }
 
 .shop .col-sm-4 h2 {
   text-align: center;
   text-shadow: #000;
-  padding-top: 50%;
+  margin-top:-90%;
   font-family: Georgia;
   text-shadow: 18px 12px 5px #000;
   font-size:42px;
 }
-.photo1 {
+/* .photo1 {
   background-image: url(images/Baggy.jpg);
   background-position: center;
+} */
+.shop img{
+  width:250px;
+  height:100%;
+ 
 }
-.photo2 {
+/* .photo2 {
   background-image: url(images/man.jpg);
 }
 .photo3 {
@@ -293,10 +299,10 @@
 .photo4 {
   background-image: url(images/electric.jpg); 
   background-position: center;
-}
-.shop .col-sm-4{
+} */
+/* .shop .col-sm-4{
   background-size: cover;
-}
+} */
 .shop .col-sm-4:hover{
   filter: grayscale(1);
   cursor:pointer;
