@@ -37,6 +37,7 @@ const ProductList = ({ products, setProducts }) => {
         <table className="table" border="2px">
           <thead>
             <tr>
+              <td>Subcategory:</td>
               <td>Product Name:</td>
               <td>Description:</td>
               <td>Image(URL):</td>
@@ -46,6 +47,7 @@ const ProductList = ({ products, setProducts }) => {
           <tbody>
             {products.map((product, index) => (
               <tr key={index}>
+                <td>{product.subcategory_id}</td>
                 <td>{product.product_name}</td>
                 <td>{product.description}</td>
                 <td>{product.image}</td>

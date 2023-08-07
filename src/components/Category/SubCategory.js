@@ -1,25 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import ProductList from "./ProductList";
+import SubCategoryList from "./SubCategoryList";
 
-const AddProduct = () => {
-  const [products, setProducts] = useState([]);
+const SubCategory = () => {
   const [SubCategory, setSubCategory] = useState([]);
+  const [category, setCategory] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
-  const [price, setPrice] = useState("");
-  const [selectedSubCategory, setSelectedSubCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    const url = "http://localhost:8336/subcategory/list";
+    const url = "http://localhost:8336/category/list";
 
     fetch(url)
       .then((response) => response.json())
       .then((response) => {
         if (response.Success) {
-          setSubCategory(response.data);
+          setCategory(response.data);
         } else {
           alert("Failed to fetch records");
         }
@@ -28,71 +27,66 @@ const AddProduct = () => {
         alert("Request Failed");
       });
   }, []);
-
   const add = (e) => {
     e.preventDefault();
-    if (selectedSubCategory === "" || name === "" || description === "") {
+    if (selectedCategory === "" || name === "" || description === "") {
       alert("All fields are mandatory!");
       return;
     }
 
-    const newProduct = {
-      subcategory_id: selectedSubCategory,
-      product_name: name,
+    const newSubCategory = {
+      category_id: selectedCategory,
+      name: name,
       description: description,
-      image: image,
-      price: price,
     };
 
-    const url = "http://localhost:8336/products/create";
+    const url = "http://localhost:8336/subcategory/create";
 
     fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newProduct),
+      body: JSON.stringify(newSubCategory),
     })
       .then((response) => response.json())
       .then((response) => {
         if (response.Success) {
           alert("Added successfully");
         } else {
-          alert("Failed to add Product!!!!");
+          alert("Failed to add Category!!!!");
         }
       })
       .catch((error) => {
         alert("error occured");
       });
 
-    setProducts((prevProducts) => [...prevProducts, newProduct]);
-    setSelectedSubCategory("");
+    setSubCategory((prevSubCategory) => [...prevSubCategory, newSubCategory]);
+    setSelectedCategory("");
     setName("");
     setDescription("");
-
-    //navigate("/products/list"); // Navigate to the ProductList page
   };
   return (
-    <div className="product">
+    <div className="category">
       <form onSubmit={add}>
-        <h3 style={{ textAlign: "center" }}>Products:</h3>
+        <h3 style={{ textAlign: "center" }}>Categories:</h3>
         <div>
-          <label>SubCategory:</label>
+          <label>Category:</label>
           <select
             className="form-control"
-            value={selectedSubCategory}
-            onChange={(e) => setSelectedSubCategory(e.target.value)}
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
           >
             <option value="">Select a category</option>
-            {SubCategory.map((SubCategory) => (
-              <option key={SubCategory.id} value={SubCategory.id}>
-                {SubCategory.name}
+            {category.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
               </option>
             ))}
           </select>
         </div>
         <div>
-          <label>Product Name:</label>
+          <label>Name:</label>
           <input
             type="text"
             className="form-control"
@@ -101,6 +95,7 @@ const AddProduct = () => {
             onChange={(e) => setName(e.target.value)}
           />
         </div>
+
         <div>
           <label>Description:</label>
           <input
@@ -111,27 +106,6 @@ const AddProduct = () => {
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-        <div>
-          <label>Image Url:</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="image"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Price:</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="price"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-          />
-        </div>
-
         <button type="submit" className="btn btn-dark" onClick={add}>
           Add
         </button>
@@ -144,9 +118,11 @@ const AddProduct = () => {
           </Link>
         </div>
       </form>
-      <ProductList products={products} setProducts={setProducts} />
-      {/* Render the ProductList component */}
+      <SubCategoryList
+        SubCategory={SubCategory}
+        setSubCategory={setSubCategory}
+      />
     </div>
   );
 };
-export default AddProduct;
+export default SubCategory;

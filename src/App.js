@@ -56,6 +56,8 @@ import Tuttleneck from "./components/Design/Men/M.cart/Sweaters/Tuttlneck";
 import Sweats from "./components/Design/Men/M.cart/Sweaters/Sweats";
 import CategoryList from "./components/Category/CategoryList";
 import AddCategory from "./components/Category/AddCategory";
+import SubCategory from "./components/Category/SubCategory";
+import SubCategoryList from "./components/Category/SubCategoryList";
 
 function App() {
   return (
@@ -70,6 +72,8 @@ function App() {
           <Route exact path="/products/list" element={<ProductList />} />
           <Route exact path="/category/add" element={<AddCategory />} />
           <Route exact path="/category/list" element={<CategoryList />} />
+          <Route exact path="/subcategory/add" element={<SubCategory />} />
+          <Route exact path="/subcategory/list" element={<SubCategoryList />} />
           <Route exact path="/customers/add" element={<AddCustomers />} />
           <Route exact path="/design/l" element={<Login />} />
           <Route exact path="/design/s" element={<Signup />} />
