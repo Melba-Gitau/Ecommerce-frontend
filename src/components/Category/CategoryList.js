@@ -4,10 +4,26 @@ import { Link, useNavigate } from "react-router-dom";
 const CategoryList = ({ category, setCategory }) => {
   const navigate = useNavigate();
 
-  const deleteCategory = (index) => {
+  const deleteCategory = async (index) => {
     const updatedCategory = [...category];
-    updatedCategory.splice(index, 1);
-    setCategory(updatedCategory);
+    const deletedCategoryId = updatedCategory[index].id; // Assuming each category has an 'id'
+
+    const url = `http://localhost:8336/category/delete/${deletedCategoryId}`;
+
+    try {
+      const response = await fetch(url, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        updatedCategory.splice(index, 1);
+        setCategory(updatedCategory);
+      } else {
+        console.error("Failed to delete category");
+      }
+    } catch (error) {
+      console.error("An error occurred", error);
+    }
   };
 
   const updatedCategory = (category) => {

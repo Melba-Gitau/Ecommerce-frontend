@@ -69,7 +69,7 @@ const SubCategory = () => {
   return (
     <div className="category">
       <form onSubmit={add}>
-        <h3 style={{ textAlign: "center" }}>Categories:</h3>
+        <h3 style={{ textAlign: "center" }}>Sub-Categories:</h3>
         <div>
           <label>Category:</label>
           <select

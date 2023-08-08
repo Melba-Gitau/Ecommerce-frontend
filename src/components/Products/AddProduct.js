@@ -10,10 +10,12 @@ const AddProduct = () => {
   const [image, setImage] = useState("");
   const [price, setPrice] = useState("");
   const [selectedSubCategory, setSelectedSubCategory] = useState("");
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    const url = "http://localhost:8336/subcategory/list";
+    const BASE_URL = "http://localhost:8336";
+    const url = BASE_URL + "/subcategory/list";
 
     fetch(url)
       .then((response) => response.json())
@@ -31,7 +33,7 @@ const AddProduct = () => {
 
   const add = (e) => {
     e.preventDefault();
-    if (selectedSubCategory === "" || name === "" || description === "") {
+    if (name === "" || description === "" || image === "" || price === "") {
       alert("All fields are mandatory!");
       return;
     }
@@ -44,31 +46,12 @@ const AddProduct = () => {
       price: price,
     };
 
-    const url = "http://localhost:8336/products/create";
-
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newProduct),
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        if (response.Success) {
-          alert("Added successfully");
-        } else {
-          alert("Failed to add Product!!!!");
-        }
-      })
-      .catch((error) => {
-        alert("error occured");
-      });
-
     setProducts((prevProducts) => [...prevProducts, newProduct]);
     setSelectedSubCategory("");
     setName("");
     setDescription("");
+    setImage("");
+    setPrice("");
 
     //navigate("/products/list"); // Navigate to the ProductList page
   };
@@ -77,13 +60,13 @@ const AddProduct = () => {
       <form onSubmit={add}>
         <h3 style={{ textAlign: "center" }}>Products:</h3>
         <div>
-          <label>SubCategory:</label>
+          <label>Sub-Category:</label>
           <select
             className="form-control"
             value={selectedSubCategory}
             onChange={(e) => setSelectedSubCategory(e.target.value)}
           >
-            <option value="">Select a category</option>
+            <option value="">Select a subcategory</option>
             {SubCategory.map((SubCategory) => (
               <option key={SubCategory.id} value={SubCategory.id}>
                 {SubCategory.name}
@@ -91,6 +74,7 @@ const AddProduct = () => {
             ))}
           </select>
         </div>
+
         <div>
           <label>Product Name:</label>
           <input

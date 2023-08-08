@@ -4,10 +4,27 @@ import { Link, useNavigate } from "react-router-dom";
 const SubCategoryList = ({ SubCategory, setSubCategory }) => {
   const navigate = useNavigate();
 
-  const deleteSubCategory = (index) => {
-    const updatedSubCategory = [...SubCategory];
-    updatedSubCategory.splice(index, 1);
-    setSubCategory(updatedSubCategory);
+  const deleteSubCategory = async (index, SubCategoryId) => {
+    const url = `http://localhost:8336/subcategory/delete/${SubCategoryId}`;
+
+    try {
+      const response = await fetch(url, {
+        method: "DELETE",
+      });
+
+      const text = await response.text();
+
+      if (response.ok) {
+        console.log(text);
+        const updatedSubCategory = [...SubCategory];
+        updatedSubCategory.splice(index, 1);
+        setSubCategory(updatedSubCategory);
+      } else {
+        alert("Delete request failed: " + text);
+      }
+    } catch (error) {
+      alert("An error occurred: " + error);
+    }
   };
 
   const updatedSubCategory = (SubCategory) => {
@@ -54,7 +71,9 @@ const SubCategoryList = ({ SubCategory, setSubCategory }) => {
                   </button>
                 </td>
                 <td>
-                  <button onClick={() => deleteSubCategory(index)}>
+                  <button
+                    onClick={() => deleteSubCategory(index, SubCategory.id)}
+                  >
                     Delete
                   </button>
                 </td>

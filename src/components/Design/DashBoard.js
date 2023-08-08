@@ -165,7 +165,7 @@ const DashBoard = () => {
                         to="/subcategory/add"
                         style={{ color: "white", textDecoration: "none" }}
                       >
-                        Add Category
+                        Add Sub-Category
                       </Link>
                     </li>
                     <li>

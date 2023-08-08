@@ -4,10 +4,26 @@ import { Link, useNavigate } from "react-router-dom";
 const ProductList = ({ products, setProducts }) => {
   const navigate = useNavigate();
 
-  const deleteProduct = (index) => {
-    const updatedProducts = [...products];
-    updatedProducts.splice(index, 1);
-    setProducts(updatedProducts);
+  const deleteProduct = async (index) => {
+    const updatedProduct = [...products];
+    const deletedProductId = updatedProduct[index].id; // Assuming each category has an 'id'
+
+    const url = `http://localhost:8336/products/delete/${deletedProductId}`;
+
+    try {
+      const response = await fetch(url, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        updatedProduct.splice(index, 1);
+        setProducts(updatedProduct);
+      } else {
+        console.error("Failed to delete product");
+      }
+    } catch (error) {
+      console.error("An error occurred", error);
+    }
   };
 
   const updatedProduct = (product) => {
