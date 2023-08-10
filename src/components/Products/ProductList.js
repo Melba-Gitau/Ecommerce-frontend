@@ -6,7 +6,7 @@ const ProductList = ({ products, setProducts }) => {
 
   const deleteProduct = async (index) => {
     const updatedProduct = [...products];
-    const deletedProductId = updatedProduct[index].id; // Assuming each category has an 'id'
+    const deletedProductId = updatedProduct[index].id;
 
     const url = `http://localhost:8336/products/delete/${deletedProductId}`;
 

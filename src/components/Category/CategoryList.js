@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import AddCategory from "./AddCategory";
 
 const CategoryList = ({ category, setCategory }) => {
   const navigate = useNavigate();
@@ -19,15 +20,33 @@ const CategoryList = ({ category, setCategory }) => {
         updatedCategory.splice(index, 1);
         setCategory(updatedCategory);
       } else {
-        console.error("Failed to delete category");
+        alert("Failed to delete category");
       }
     } catch (error) {
-      console.error("An error occurred", error);
+      alert("An error occurred", error);
     }
   };
 
-  const updatedCategory = (category) => {
-    navigate(`/category/${category.name}`, { state: category });
+  const updatedCategory = async (category) => {
+    const url = `http://localhost:8336/category/update/${category.id}`;
+
+    try {
+      const response = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(category),
+      });
+
+      if (response.ok) {
+        navigate(`/category/${category.name}`, { state: category });
+      } else {
+        console.error("Failed to update category");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
   };
 
   useEffect(() => {
